@@ -18,7 +18,7 @@ func (converter) BoolToBytes(val bool, buff []uint8) []uint8 {
 	} else {
 		buff[0] = 0
 	}
-	return buff
+	return buff[:1]
 }
 
 func (converter) BoolFromBytes(bytes []uint8) bool {
@@ -37,7 +37,7 @@ func (converter) Uint8ToBytes(val uint8, buff []uint8) []uint8 {
 		return buff
 	}
 	buff[0] = val
-	return buff
+	return buff[:1]
 }
 
 func (converter) Uint8FromBytes(bytes []uint8) uint8 {
@@ -53,7 +53,7 @@ func (converter) Uint16ToBytes(val uint16, buff []uint8) []uint8 {
 	}
 	buff[0] = uint8(val)
 	buff[1] = uint8(val >> 8)
-	return buff
+	return buff[:2]
 }
 
 func (converter) Uint16FromBytes(bytes []uint8) uint16 {
@@ -71,7 +71,7 @@ func (converter) Uint32ToBytes(val uint32, buff []uint8) []uint8 {
 	buff[1] = uint8(val >> 8)
 	buff[2] = uint8(val >> 16)
 	buff[3] = uint8(val >> 24)
-	return buff
+	return buff[:4]
 }
 
 func (converter) Uint32FromBytes(bytes []uint8) uint32 {
@@ -90,7 +90,7 @@ func (converter) Float32ToBytes(val float32, buff []uint8) []uint8 {
 	buff[1] = uint8(bits >> 8)
 	buff[2] = uint8(bits >> 16)
 	buff[3] = uint8(bits >> 24)
-	return buff
+	return buff[:4]
 }
 
 func (converter) Float32FromBytes(bytes []uint8) float32 {
@@ -114,7 +114,7 @@ func (converter) Float64ToBytes(val float64, buff []uint8) []uint8 {
 	buff[5] = byte(bits >> 40)
 	buff[6] = byte(bits >> 48)
 	buff[7] = byte(bits >> 56)
-	return buff
+	return buff[:8]
 }
 
 func (converter) Float64FromBytes(bytes []uint8) float64 {
